@@ -1,0 +1,57 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-dot-red: oklch(0.65 0.2 25);
+  --color-dot-yellow: oklch(0.8 0.15 85);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: oklch(0.17 0.03 262);
+  --foreground: oklch(0.96 0.01 260);
+  --card: oklch(0.21 0.035 262);
+  --primary: oklch(0.74 0.13 250);
+  --primary-foreground: oklch(0.17 0.03 262);
+  --muted: oklch(0.25 0.035 262);
+  --muted-foreground: oklch(0.72 0.03 260);
+  --border: oklch(1 0 0 / 9%);
+  --success: oklch(0.75 0.17 155);
+  --glow: radial-gradient(60rem 40rem at 85% -10%, oklch(0.74 0.13 250 / 18%), transparent 60%),
+    radial-gradient(40rem 30rem at -10% 30%, oklch(0.75 0.17 155 / 7%), transparent 60%);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1 !important; transform: none !important; } }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body { background: var(--glow), var(--color-background); background-attachment: fixed; color: var(--color-foreground); font-family: var(--font-sans); }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+@utility animate-float { animation: float 6s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100% { box-shadow: 0 0 0 0 oklch(0.75 0.17 155 / 60%) } 50% { box-shadow: 0 0 0 6px transparent } }
+@utility animate-pulse-dot { animation: pulse-dot 2s infinite; }
+@utility glass { background: oklch(0.21 0.035 262 / 70%); backdrop-filter: blur(14px); }
+@utility text-gradient { background: linear-gradient(120deg, var(--foreground), var(--primary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
