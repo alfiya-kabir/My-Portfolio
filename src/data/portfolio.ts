@@ -11,7 +11,7 @@ export const profile = {
   phone: "+971 50 475 0014",
   github: "https://github.com/alfiya-kabir/",
   linkedin: "https://www.linkedin.com/in/alfiya-k-2709891a3/",
-  resume: "#", // TODO: replace with a link to your CV PDF
+  resume: "/alfiya-kabir-resume.pdf",
 };
 
 export const stats = [

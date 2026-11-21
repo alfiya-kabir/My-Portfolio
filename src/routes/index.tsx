@@ -71,7 +71,7 @@ function Header() {
             <a key={id} href={`#${id}`} className={`rounded-lg px-3 py-1.5 text-sm transition ${active === id ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}>{label}</a>
           ))}
         </nav>
-        <a href={profile.resume} className="shrink-0 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25">Download CV</a>
+        <a href={profile.resume} download className="shrink-0 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25">Download CV</a>
         <span className="absolute bottom-0 left-0 h-0.5 bg-primary transition-[width]" style={{ width: `${progress * 100}%` }} />
       </div>
     </header>
@@ -127,7 +127,15 @@ function ProjectModal({ p, onClose }: { p: Project; onClose: () => void }) {
 function Index() {
   useReveal();
   const [open, setOpen] = useState<Project | null>(null);
-  const [sent, setSent] = useState(false);
+  const [copiedContact, setCopiedContact] = useState<"email" | "phone" | "error" | null>(null);
+  const copyContact = async (type: "email" | "phone", value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedContact(type);
+    } catch {
+      setCopiedContact("error");
+    }
+  };
   return (
     <div className="overflow-x-hidden">
       <Header />
@@ -191,17 +199,27 @@ function Index() {
           <div className="grid gap-10 md:grid-cols-2">
             <Reveal className="space-y-5">
               <p className="text-lg text-muted-foreground">I'm available to join immediately and happy to chat about frontend or full-stack roles in the UAE or abroad.</p>
-              <a href={`mailto:${profile.email}`} className="block font-display text-2xl font-bold text-primary hover:underline md:text-3xl">{profile.email}</a>
-              <p className="text-muted-foreground">{profile.phone}</p>
+              <div className="flex items-center justify-between gap-4 rounded-xl border bg-card p-4">
+                <span className="break-all font-display text-lg font-bold md:text-xl">{profile.email}</span>
+                <button type="button" onClick={() => void copyContact("email", profile.email)} className="shrink-0 rounded-lg border px-3 py-2 text-sm transition hover:border-primary/60 hover:text-primary">
+                  {copiedContact === "email" ? "Copied" : "Copy email"}
+                </button>
+              </div>
+              <div className="flex items-center justify-between gap-4 rounded-xl border bg-card p-4">
+                <span className="text-lg">{profile.phone}</span>
+                <button type="button" onClick={() => void copyContact("phone", profile.phone)} className="shrink-0 rounded-lg border px-3 py-2 text-sm transition hover:border-primary/60 hover:text-primary">
+                  {copiedContact === "phone" ? "Copied" : "Copy phone"}
+                </button>
+              </div>
+              <p className="min-h-5 text-sm text-muted-foreground" aria-live="polite">
+                {copiedContact === "error" ? "Could not copy. Please copy the contact details manually." : copiedContact ? `${copiedContact === "email" ? "Email" : "Phone number"} copied to clipboard.` : ""}
+              </p>
               <div className="flex gap-3"><a href={profile.linkedin} target="_blank" rel="noreferrer" className="rounded-xl border px-4 py-2 hover:border-primary/60 hover:text-primary">LinkedIn</a><a href={profile.github} target="_blank" rel="noreferrer" className="rounded-xl border px-4 py-2 hover:border-primary/60 hover:text-primary">GitHub</a></div>
             </Reveal>
-            <Reveal delay={150}>
-              <form className="space-y-3 rounded-2xl border bg-card p-6" onSubmit={(e) => { e.preventDefault(); const f = new FormData(e.currentTarget); window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent("Hello from " + f.get("name"))}&body=${encodeURIComponent(String(f.get("message")))}`; setSent(true); }}>
-                <input required name="name" placeholder="Your name" aria-label="Your name" className="w-full rounded-xl border bg-muted/50 px-4 py-3 outline-none focus:border-primary" />
-                <textarea required name="message" rows={4} placeholder="Your message" aria-label="Your message" className="w-full rounded-xl border bg-muted/50 px-4 py-3 outline-none focus:border-primary" />
-                <button className="w-full rounded-xl bg-primary py-3 font-semibold text-primary-foreground transition hover:shadow-lg hover:shadow-primary/25">{sent ? "Opening your email app…" : "Send message"}</button>
-              </form>
-            </Reveal>
+            {/* <Reveal delay={150} className="flex flex-col justify-center gap-4 rounded-2xl border bg-card p-6">
+              <a href={`mailto:${profile.email}`} className="rounded-xl bg-primary px-5 py-3 text-center font-semibold text-primary-foreground transition hover:shadow-lg hover:shadow-primary/25">Email me</a>
+              <a href={`tel:${profile.phone.replace(/[^\d+]/g, "")}`} className="rounded-xl border px-5 py-3 text-center font-semibold transition hover:border-primary/60 hover:text-primary">Call me</a>
+            </Reveal> */}
           </div>
         </Section>
       </main>
