@@ -99,7 +99,7 @@ function Hero() {
         <div className="flex flex-wrap gap-2">{heroStack.map((s) => <Pill key={s}>{s}</Pill>)}</div>
         <div className="animate-float mt-10 overflow-hidden rounded-2xl border bg-card font-mono text-sm shadow-2xl shadow-primary/10">
           <div className="flex items-center gap-2 border-b px-4 py-3"><span className="h-3 w-3 rounded-full bg-dot-red" /><span className="h-3 w-3 rounded-full bg-dot-yellow" /><span className="h-3 w-3 rounded-full bg-success" /><span className="ml-2 text-muted-foreground">developer.ts</span></div>
-          <pre className="overflow-x-auto p-5 leading-7 text-muted-foreground"><span className="text-primary">const</span> alfiya = {"{"}{"\n"}  role: <span className="text-success">"Full-Stack Developer"</span>,{"\n"}  experience: <span className="text-success">"5 years"</span>,{"\n"}  loves: [<span className="text-success">"complex UIs"</span>, <span className="text-success">"clean code"</span>],{"\n"}  status: <span className="text-success">"ready to join"</span>,{"\n"}{"}"};</pre>
+          <pre className="overflow-x-auto p-5 leading-7 text-muted-foreground"><span className="text-primary">const</span> alfiya = {"{"}{"\n"}  role: <span className="text-success">"Full-Stack Developer"</span>,{"\n"}  experience: <span className="text-success">"5 years"</span>,{"\n"}  loves: [<span className="text-success">"scalable systems"</span>, <span className="text-success">"clean code"</span>],{"\n"}  status: <span className="text-success">"ready to join"</span>,{"\n"}{"}"};</pre>
         </div>
       </Reveal>
     </section>

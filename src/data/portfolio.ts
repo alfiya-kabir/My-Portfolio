@@ -3,9 +3,9 @@ export const profile = {
   name: "Alfiya K",
   role: "Full-Stack Developer",
   location: "Ajman, UAE",
-  headline: "I build the interfaces SaaS teams scale on.",
+  headline: "I build the products that power modern businesses.",
   intro:
-    "Five years turning complex business logic into fast, intuitive web apps with React, Angular, Next.js and TypeScript — from no-code form engines and workflow builders to real-time dashboards for clients in the US and UAE.",
+    "Five years transforming complex business requirements into scalable, intuitive web applications using React, Angular, Next.js, Node.js and TypeScript — spanning dynamic form systems, workflow automation, data-rich dashboards and enterprise SaaS platforms.",
   availability: "Immediate joiner · UAE spouse visa (transferable) · Open to relocation",
   email: "alfiyakabir57@gmail.com",
   phone: "+971 50 475 0014",
@@ -15,8 +15,8 @@ export const profile = {
 };
 
 export const stats = [
-  { value: "5+", label: "Years building for the web" },
-  { value: "6+", label: "SaaS & enterprise products shipped" },
+  { value: "4+", label: "Years building for the web" },
+  { value: "5+", label: "SaaS & enterprise products shipped" },
   { value: "US · UAE", label: "Clients collaborated with" },
 ];
 
@@ -34,7 +34,7 @@ export const experience = [
     period: "May 2023 – May 2026",
     place: "Trivandrum, India",
     points: [
-      "I led frontend development across multiple SaaS and enterprise products in React, Angular and TypeScript — dynamic forms, dashboards, workflow automation and scalable state management.",
+      "I led development across multiple SaaS and enterprise products in React, Angular, Node.js and TypeScript — dynamic forms, dashboards, workflow automation and scalable state management.",
       "I owned client communication with US and UAE stakeholders, turning requirements into sprint-ready features and on-time releases.",
       "I built and maintained E2E and unit test suites with Cypress, Cucumber, Jest and Karma to keep releases confident.",
       "I integrated LLM APIs into internal tools for document summarization and audio-to-notes conversion.",
@@ -60,36 +60,60 @@ export const projects: Project[] = [
     title: "Lead Management Platform",
     tag: "Multi-tenant SaaS · Frontend Lead",
     summary: "A domain-independent CRM where every field, form and workflow is driven by configuration — not code.",
-    stack: ["React", "TypeScript", "Tailwind", "xyFlow", "dnd-kit", "Recharts", "Radix UI", "i18next"],
-    points: [
-      "Led the frontend from an AI-generated prototype to a production platform, coordinating client, backend and QA teams.",
-      "Built a no-code form engine and external form builder — drag fields, configure properties, publish and capture leads from any website.",
-      "Created a drag-and-drop workflow builder with triggers, conditions and actions on xyFlow.",
-      "Shipped Kanban lead pipelines, dynamic field templates, analytics dashboards and full LTR/RTL support.",
-    ],
+    stack: ["React", "TypeScript", "Tailwind", "Tanstack Query", "React Hook Form", "dnd-kit", "Recharts", "Radix UI", "i18next"],
+
+points: [
+  "Contributed as Lead Frontend Developer, shaping the platform from an initial prototype into a configurable, multi-tenant SaaS product, collaborating with clients and backend/QA teams.",
+  "Developed a configuration-driven form engine supporting custom fields, reusable templates, dynamic layouts and validation, allowing businesses to customize lead and contact data without code changes.",
+  "Built an external no-code form builder with drag-and-drop field configuration, customizable properties and publishing capabilities, enabling businesses to embed lead-capture forms into their own websites.",
+  "Implemented a visual workflow automation builder using xyFlow, allowing businesses to configure triggers, conditions and actions for lead-related processes.",
+  "Developed lead and contact management modules with customizable Kanban pipelines, drag-and-drop stage transitions, advanced filtering and configurable business fields.",
+  "Built interactive analytics dashboards and data visualizations, alongside multi-role access control, responsive layouts and complete LTR/RTL support."
+],
+
   },
   {
     title: "OMai — Renewable Energy",
     tag: "Biogas plant monitoring · US client",
     summary: "Multi-site monitoring for biogas plants with live data, charts and interactive P&ID diagrams.",
-    stack: ["Angular 17", "React", "NgRx", "D3.js", "Material UI"],
+    stack: ["Angular 17", "NgRx", "D3.js", "Material UI"],
     points: [
       "Architected the frontend and complex NgRx state for multi-site management.",
       "Built site-specific dashboards with live and historical D3.js / chart visualizations.",
       "Developed interactive P&ID piping diagrams with drag-and-drop labels.",
     ],
   },
+  
   {
     title: "LegalZoom",
-    tag: "Company formation platform · US",
-    summary: "A live service automating LLC and corporation filings across every US state.",
-    stack: ["Angular", "React", "Cypress", "Cucumber", "Jasmine", "Docker"],
+    tag: "LegalTech · Business formation · US",
+    summary: "A production-grade legal-tech platform that helps entrepreneurs establish LLCs and corporations across the United States. Built around state-specific filing workflows, the ecosystem included 10–12 Dockerized applications in a monorepo, supporting white-label client experiences and administrative tools.",
+    stack: [
+      "Angular",
+      "React",
+      "TypeScript",
+      "Cypress",
+      "Cucumber",
+      "Jasmine",
+      "Docker",
+      "Forge",
+      "Datadog"
+    ],
     points: [
-      "Added features and state-specific business logic to multi-step form workflows in a large Dockerized monorepo.",
-      "Wrote E2E tests and owned stories from development through Forge deployment and Datadog verification.",
+      "Developed and enhanced features across a large, multi-application Dockerized monorepo, extending an established production platform while preserving legacy functionality and avoiding regressions.",
+      "Implemented state-specific business rules, dynamic form behaviour, validations and multi-step workflows for LLC and corporation formation processes.",
+      "Contributed to multiple white-label applications, delivering client-specific features and enhancements while maintaining consistency across different application experiences.",
+      "Worked across frontend applications and supporting administrative tools within the platform, adapting existing functionality to evolving business and client requirements.",
+      "Supported Angular modernization by replacing deprecated APIs and patterns, addressing compatibility issues and assisting with framework upgrade efforts.",
+      "Integrated REST APIs and implemented frontend enhancements in collaboration with backend developers, translating client requirements into production-ready features.",
+      "Wrote and maintained unit tests and end-to-end test scenarios using Jasmine, Cypress and Cucumber to validate functionality and prevent regressions.",
+      "Collaborated with clients, developers and QA teams through requirement discussions, daily stand-ups and sprint activities.",
+      "Supported the complete feature lifecycle, from development and testing through Forge deployments and production verification.",
+      "Used Datadog to monitor application errors, investigate production issues and verify application behaviour following releases."
     ],
     link: "https://www.legalzoom.com/country/ae",
   },
+
   {
     title: "BAXE",
     tag: "Fintech & e-commerce",
@@ -100,16 +124,33 @@ export const projects: Project[] = [
     ],
     link: "https://www.linkedin.com/company/baxe/",
   },
+
   {
     title: "Internal AI Tools",
-    tag: "LLM experiments",
-    summary: "PDF & news summarizers, audio-to-notes and a local-model chat assistant.",
-    stack: ["Python", "Streamlit", "FastAPI", "Hugging Face", "Whisper", "SQLite"],
-    points: [
-      "Built summarizers using BART with text chunking, and an RSS news tracker.",
-      "Turned Whisper transcriptions into structured notes; built a FastAPI chat assistant on Mistral / TinyLlama.",
+    tag: "Applied AI · LLM Prototypes · NLP",
+    summary: "A collection of practical AI prototypes exploring document intelligence, automated content processing, speech recognition and local LLM-powered assistants. Built with Python and Hugging Face models, combining NLP pipelines, lightweight databases and API-driven applications.",
+    stack: [
+      "Python",
+      "Streamlit",
+      "FastAPI",
+      "Hugging Face",
+      "BART",
+      "Whisper",
+      "Mistral",
+      "TinyLlama",
+      "Ollama",
+      "SQLite"
     ],
-    link: "https://github.com/alfiya-kabir/LLM-Projects",
+    points: [
+      "Developed a PDF and document summarization tool using Hugging Face BART, processing lengthy documents through text extraction, chunking and model-based summarization.",
+      "Built an RSS-based news aggregation tool to collect articles from multiple feeds, extract content and generate concise AI-powered summaries for easier information discovery.",
+      "Explored NLP pipelines for processing and transforming unstructured text into shorter, more readable and useful outputs.",
+      "Developed an audio-to-notes application using OpenAI Whisper for speech-to-text transcription, transforming recorded audio into structured, readable notes.",
+      "Built a local-model conversational assistant using Mistral and TinyLlama, enabling users to interact with locally hosted language models through a chat interface.",
+      "Developed FastAPI backend services to expose AI processing and model interactions through API endpoints.",
+      "Created interactive Streamlit interfaces for uploading documents, processing content, viewing summaries and interacting with AI-powered tools.",
+      "Used SQLite for lightweight application data persistence across the prototypes."
+    ],
   },
 ];
 
